@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <head>
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+<meta property="og:image" content="https://lettovimusic.netlify.app/favicon.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LETTO-VI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background: #121212;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff;
+      border-bottom: 1px solid #222;
+    }
+
+    nav {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #0ff;
+      text-shadow: 0 0 6px #0ff;
+    }
+    .coming-soon {
+  display: block;
+}
+    </style>
+</head>
+<body>
+  <section class="coming-soon">
+  <h2 class="soon-title">💥 трек уже доступный на нашем сайте: </h2>
+  <p class="teaser-line">Тяга к ней, сильнее боли</p>
+</section>
+  <header>
+  <h1>LETTO-VI MUSIC</h1>
+  <nav>
+  <a href="index.html" class="active">Главная</a>
+  <a href="tracks.html">Треки</a>
+  <a href="about.html">Обо мне</a>
+</nav>
+</header>
+
+  <main class="hero">
+  <div class="intro-text">
+    <h2>Добро пожаловать в мир</h2>
+    <div class="main-cover-container">
+  <img src="image/favicon.png" alt="Обложка сайта" class="main-cover">
+</div>
+  </div>
+</main>
+
+<div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+  <a href="https://www.tiktok.com/@letto_vi" target="_blank">
+    <img src="icons/tiktok.png" alt="TikTok" width="40" height="40" style="border-radius: 8px;">
+  </a>
+  <a href="https://youtube.com/@letto-vi?si=1Ftg6UcaTbstAP60" target="_blank">
+    <img src="icons/youtube.png" alt="YouTube" width="40" height="40" style="border-radius: 8px;">
+  </a>
+  <a href="https://t.me/Letto_Vi" target="_blank">
+  <img src="icons/telegram.png" alt="Telegram" width="40" height="40" style="border-radius: 8px;">
+</a>
+  <a href="https://linkm.me/users/lett0_vi" target="_blank">
+    <img src="icons/link.png" alt="LinkM" width="40" height="40" style="border-radius: 8px;">
+  </a>
+</div>
+<section class="feedback">
+  <h2>Оставить отзыв</h2>
+  <form name="feedback" method="POST" data-netlify="true" class="feedback-form">
+  <input type="hidden" name="form-name" value="feedback" />
+  <textarea name="message" placeholder="Оставь отзыв..."></textarea>
+  <button type="submit">Отправить</button>
+</form>
+  <p id="thankYouMessage" style="display: none;">Спасибо за отзыв!</p>
+</section>
+</section>
+<section class="quote-section">
+  <blockquote id="quote-box">...</blockquote>
+</section>
+  <footer>&copy; 2025 LETTO-VI. Все права защищены.</footer>
+<script>
+  function toggleLyrics(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "none" || x.style.display === "") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+<script>
+  const quotes = [
+  "Я вижу тебя в каждой другой, но, ни одна не ты...",
+  "20.10 — не просто дата.",
+  "Иногда проще сгореть, чем забыть.",
+  "Молчание тоже говорит — и часто громче, чем крик.",
+  "Город жив, но без тебя — мёртв",
+  "Я там, где ночь касается сердца.",
+  "Ты — сбой в системе, и мне плевать.",
+  "Ты в моей памяти — как фонарь в дыму.",
+  "Каждое 'заново' — как плевок в грудь.",
+  "Ты — как заряд внутри, что рвёт меня на части.",
+  "Ты молчишь — а во мне глухо и пусто.",
+  "Ты — огонь, что не достать, и я горю снаружи.",
+  "Ты останешься… мой сбой в системе."
+];
+
+  let quoteIndex = 0;
+  const quoteBox = document.getElementById("quote-box");
+
+  function showNextQuote() {
+    quoteBox.classList.add("fade-out");
+
+    setTimeout(() => {
+      quoteBox.textContent = quotes[quoteIndex];
+      quoteBox.classList.remove("fade-out");
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+    }, 600);
+  }
+
+  showNextQuote();
+  setInterval(showNextQuote, 7000);
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const feedbackForm = document.querySelector(".feedback-form");
+
+    if (feedbackForm) {
+      const inputs = feedbackForm.querySelectorAll("input, textarea, button");
+
+      inputs.forEach((element) => {
+        element.addEventListener("focus", (e) => {
+          e.target.blur();
+          alert("функция в разработке, пока можете написать отзыв мне в соц.сети.");
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>
